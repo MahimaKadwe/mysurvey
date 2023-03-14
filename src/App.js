@@ -1,24 +1,59 @@
-import logo from './logo.svg';
+/* eslint-disable no-const-assign */
 import './App.css';
+import Navbar from './component/Navbar.js';
+// eslint-disable-next-line no-unused-vars
+// import Text from './component/Text.js';
 
+import Cardss from './component/Cardss.js';
+// import Card from 'react-bootstrap/Card';
+import React, {useState} from 'react';
+import Table from './component/Table.js';
+import Search from './component/Search.js';
 function App() {
+  // eslint-disable-next-line no-unused-vars
+  const [mode, setMode] = useState('light');
+
+  // const swithcd = () =>{
+  //   if(mode === 'green'){
+  //     setMode('yellow')
+  //     document.body.style.background = "white";
+  //   }
+  //   else{
+  //     setMode('')
+  //     document.body.style.background = "#0d213f";
+  // }
+
+  const togglemode = () =>{
+    if(mode === 'dark'){
+      setMode('light') 
+      document.body.style.background = "white";
+        }
+    else{
+      setMode('dark')
+      document.body.style.background = "#0d213f";
+    } 
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Navbar className="navbar-brand" title = "square" mode={mode} togglemode= {togglemode}> </Navbar>
+    {/* <Navbar className="navbar-brand" title ="square" mode={mode} switchd= {switchd}> </Navbar> */}
+    <div className="container">
+  <nav className="comp">
+    <div className="container-fluid ">
+      <span className="navbar-brand" href="/" style = {{color: mode === 'dark'? 'white': 'black'}} > Lets Analyze Together ! </span>
+    </div> 
+  </nav>
+  <Cardss> </Cardss>
+ {/* <button className="btn btn-primary"></button> */}
+ {/* <Text mode={mode} togglemode= {togglemode}> </Text> */}
+
+ <Table> <Search> </Search> </Table>
+ 
+
+</div>
+<p plain = "kadwe" ></p>
+     </>
+
   );
 }
 
